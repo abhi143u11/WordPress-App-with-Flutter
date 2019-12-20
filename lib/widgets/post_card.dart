@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wordpress_flutter/config.dart';
-import 'package:wordpress_flutter/pages/post_details.dart';
+import '../pages/post_details.dart';
 
 import '../model/post_entity.dart';
 
@@ -13,8 +12,9 @@ class PostCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        if(!post.isDetailCard)
-            Navigator.push(context, MaterialPageRoute(builder: (context) => PostDetails(post)));
+        if (!post.isDetailCard)
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => PostDetails(post)));
       },
       child: Padding(
         padding: const EdgeInsets.all(5.0),
@@ -27,7 +27,11 @@ class PostCard extends StatelessWidget {
             width: MediaQuery.of(context).size.width,
             child: Stack(
               children: <Widget>[
-                FadeInImage.assetNetwork(placeholder: 'images/placeholder.jpg', image: post.image, width: MediaQuery.of(context).size.width, fit: BoxFit.cover),
+                FadeInImage.assetNetwork(
+                    placeholder: 'images/placeholder.jpg',
+                    image: post.image,
+                    width: MediaQuery.of(context).size.width,
+                    fit: BoxFit.cover),
                 Positioned(
                   right: 0,
                   child: Padding(
@@ -43,7 +47,8 @@ class PostCard extends StatelessWidget {
                               color: Colors.white,
                               fontSize: 12.0,
                             )),
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0)),
                       ),
                     ),
                   ),
@@ -51,10 +56,15 @@ class PostCard extends StatelessWidget {
                 Positioned(
                   bottom: 0,
                   child: Container(
-                    decoration: BoxDecoration(gradient: LinearGradient(begin: Alignment.bottomCenter, end: Alignment.topCenter, colors: [Colors.black, Colors.transparent])),
+                    decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                            begin: Alignment.bottomCenter,
+                            end: Alignment.topCenter,
+                            colors: [Colors.black, Colors.transparent])),
                     width: MediaQuery.of(context).size.width,
                     child: Padding(
-                      padding: const EdgeInsets.only(top: 15.0, bottom: 5.0, left: 5.0, right: 5.0),
+                      padding: const EdgeInsets.only(
+                          top: 15.0, bottom: 5.0, left: 5.0, right: 5.0),
                       child: Column(
                         children: <Widget>[
                           Padding(
@@ -62,7 +72,10 @@ class PostCard extends StatelessWidget {
                             child: Text(
                               post.title,
                               textAlign: TextAlign.left,
-                              style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18.0),
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18.0),
                             ),
                           ),
                         ],

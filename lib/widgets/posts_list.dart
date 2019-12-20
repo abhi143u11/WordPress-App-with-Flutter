@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:wordpress_flutter/config.dart';
-import 'package:wordpress_flutter/model/post_entity.dart';
+import '../config.dart';
+import '../model/post_entity.dart';
 
 import 'post_card.dart';
 
@@ -30,9 +30,13 @@ class _PostsListState extends State<PostsList> {
         isLoading = true;
       });
 
-      String extra = widget.category != 0 ? "&categories=" + widget.category.toString() : "";
+      String extra = widget.category != 0
+          ? "&categories=" + widget.category.toString()
+          : "";
 
-      http.get(URL + "wp-json/wp/v2/posts?_embed&page=$page" + extra).then((response) {
+      http
+          .get(URL + "wp-json/wp/v2/posts?_embed&page=$page" + extra)
+          .then((response) {
         dynamic json = jsonDecode(response.body);
 
         List<PostEntity> _posts = new List<PostEntity>();
@@ -53,7 +57,8 @@ class _PostsListState extends State<PostsList> {
     super.initState();
     getData();
     _scrollController.addListener(() {
-      if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
+      if (_scrollController.position.pixels ==
+          _scrollController.position.maxScrollExtent) {
         getData();
       }
     });

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-const String TITLE = "ProPakistani";
+const String TITLE = "Kismet Connection";
 
 /// last slash ' / ' is mandatory
-const String URL = "https://propakistani.pk/";
+const String URL = "https://kismetconnection.in/";
 
 const MaterialColor APP_COLOR = MaterialColor(0xFF249991, {
   50: Color(0x1A249991),
